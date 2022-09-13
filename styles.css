@@ -31,7 +31,8 @@ body, a:link, a:visited, a:active{
   to { transform:rotate(360deg); }
 }
 .planet{
-  animation: rotatePlanet 5s linear infinite;
+
+  border-radius: 50%;
 }
 
 #sun {
