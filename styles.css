@@ -1,10 +1,20 @@
 body, html{
   height:100%;
+
 }
+
 body{
   margin: 0px;
-  background-color:#444;
   font-size: 18px;
+
+}
+h1{
+  text-align: center;
+  color: white;
+}
+.canvas {
+  background-image: url("comet.jpg");
+  background-size: cover;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -21,8 +31,6 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
   position:absolute;
 }
 
@@ -30,15 +38,52 @@ body, a:link, a:visited, a:active{
   from { transform:rotate(0deg); }
   to { transform:rotate(360deg); }
 }
-.planet{
+
+.comet {
+  background-image: url('https://d2cbg94ubxgsnp.cloudfront.net/Pictures/2000xAny/7/3/4/517734_gettyimages556919061_513895.jpg');
+}
+
+.planet {
+  color: #f35626;
+  border-radius: 100%;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #d01c1c, #1c2bd0, #1cd055);
+  -webkit-animation-name: planetChanger;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+  /* -webkit-background-clip: ; */
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 60s infinite linear;
+  -webkit-animation-name: planetChanger;
+
+}
+
+@-webkit-keyframes animation {
+  0%     {background-color:red;}
+  50.0%  {background-color:#1c2bd0;}
+  100.0%  {background-color:rgb(0, 255, 81);}
+}
+
+
+@keyframes planetChanger {
+  0%     {background-color:red;}
+  50.0%  {background-color: #1c2bd0} /* your chosen 'mid' color */
+  100.0%  {background-color:rgb(0, 255, 81);}
+}
+
+
+/* .planet{
 
   border-radius: 50%;
-}
+} */
 
 #sun {
   width:100px;
   height: 100px;
-  background-color: yellow;
+  /* background-image: url('ufoTest.png'); */
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 50%;
   top: 50%;
   left: 50%;
