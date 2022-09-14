@@ -1,31 +1,27 @@
 body, html{
   height:100%;
-
 }
 
 body{
   margin: 0px;
   font-size: 18px;
+  overflow: hidden;
 
 }
-h1{
-  text-align: center;
-  color: white;
-}
-.canvas {
-  background-image: url("comet.jpg");
-  background-size: cover;
-}
+
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addSpaceObjectButton, .lineUpButton{
+
+.title, .addSpaceObjectButton, .lineUpButton, .clearButton{
   padding:5px 12px;
   float:right;
 }
 .topbar{
   height:32px;
   background-color: #555;
+  position: sticky;
+  z-index: 4;
 }
 .title{
   background-color: #777;
@@ -34,67 +30,105 @@ body, a:link, a:visited, a:active{
   position:absolute;
 }
 
-@keyframes rotatePlanet {
-  from { transform:rotate(0deg); }
-  to { transform:rotate(360deg); }
-}
-
 .comet {
-  background-image: url('https://d2cbg94ubxgsnp.cloudfront.net/Pictures/2000xAny/7/3/4/517734_gettyimages556919061_513895.jpg');
-}
-
-.planet {
-  color: #f35626;
-  border-radius: 100%;
-  background-image: -webkit-linear-gradient(92deg, #f35626, #d01c1c, #1c2bd0, #1cd055);
-  -webkit-animation-name: planetChanger;
-  -webkit-animation-duration: 5s;
-  -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-play-state: running;
-  /* -webkit-background-clip: ; */
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: hue 60s infinite linear;
-  -webkit-animation-name: planetChanger;
-
-}
-
-@-webkit-keyframes animation {
-  0%     {background-color:red;}
-  50.0%  {background-color:#1c2bd0;}
-  100.0%  {background-color:rgb(0, 255, 81);}
-}
-
-
-@keyframes planetChanger {
-  0%     {background-color:red;}
-  50.0%  {background-color: #1c2bd0} /* your chosen 'mid' color */
-  100.0%  {background-color:rgb(0, 255, 81);}
-}
-
-
-/* .planet{
-
+  background-image: url('https://png.pngtree.com/element_origin_min_pic/16/09/02/2057c976b74b3a6.jpg');
+  background-position: center;
+  background-size: 150%;
+  background-repeat: no-repeat;
+  height: 50px;
+  width: 100px;
+  /* background-color: green; */
   border-radius: 50%;
-} */
+}
+
+.planetContainer {
+  width: 100vh;
+  height: 100vh;
+
+  pointer-events: none;
+
+  -webkit-animation: spin 6s linear 0s infinite reverse;
+  -moz-animation: spin 6s linear 0s infinite reverse;
+  -ms-animation: spin 6s linear 0s infinite reverse;
+  -o-animation: spin 6s linear 0s infinite reverse;
+  animation: spin 6s linear 0s infinite reverse;
+
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -ms-animation-play-state: paused;
+  -o-animation-play-state: paused;
+  animation-play-state: paused;
+}
+.planet {
+  border-radius: 100%;
+  background-image: url('https://mpng.subpng.com/20210129/ooo/transparent-saturn-icon-planet-icon-science-icon-6013dc6000d412.0677679016119143360034.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 130%;
+  z-index: 2;
+
+  -webkit-animation: spin 12s linear 0s infinite normal;
+  -moz-animation: spin 12s linear 0s infinite normal;
+  -ms-animation: spin 12s linear 0s infinite normal;
+  -o-animation: spin 12s linear 0s infinite normal;
+  animation: spin 12s linear 0s infinite normal;
+}
+.reversePlanets {
+  -webkit-animation-play-state: running;
+  -moz-animation-play-state: running;
+  -ms-animation-play-state: running;
+  -o-animation-play-state: running;
+  animation-play-state: running;
+}
+@keyframes spin {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+@-webkit-keyframes spin {
+  0% {-webkit-transform: rotate(360deg); }
+  100% { -webkit-transform: rotate(0deg); }
+}
+@-ms-keyframes spin {
+  0% {-ms-transform: rotate(360deg); }
+  100% { -ms-transform: rotate(0deg); }
+}
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(360deg); }
+  100% { -moz-transform: rotate(0deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(360deg); }
+  100% { -o-transform: rotate(0deg); }
+}
+
+.ufo {
+  background-image: url('/assetss/ufo2.jpeg');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 45%;
+  height: 100px;
+  width: 200px;
+}
 
 #sun {
-  width:100px;
+  width: 100px;
   height: 100px;
-  /* background-image: url('ufoTest.png'); */
+  background-image: url('https://spng.subpng.com/20171220/skw/sun-png-5a3a32a58ac976.5062719215137634935685.jpg');
+  background-size: 120%;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  border: 1px solid black;
+  position:absolute;
 }
 
 .canvas {
   width: 100vw;
-  height: 95vh;
+  height: calc(100vh - 32px);
   border: 1px solid black;
   display:flex;
   justify-content: center;
   align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1786&q=80");
+  background-size: cover;
 }

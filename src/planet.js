@@ -1,10 +1,6 @@
 var Planet = function(top, left, timeBetweenSteps) {
-  // var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
   RandomSpaceObject.call(this, top, left, timeBetweenSteps);
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
-  this.size = Math.floor(Math.random() * 100);
-
+  this.size = Math.floor(Math.random() * 200);
   this.$node.addClass('planet');
   this.spin();
 };
@@ -23,18 +19,21 @@ Planet.prototype.setPosition = function(top, left) {
 };
 
 Planet.prototype.spin = function() {
-  var radius;
+  var radius = this.size * 3;
+  if (radius < 100) {
+    radius = 100;
+  }
+
   var midTop = $('#sun').offset().top;
-  console.log('midTop:', midTop);
   var midLeft = $('#sun').offset().left;
-  console.log('midLeft', midLeft);
-  console.log(this);
-  console.log(this.size);
+
+  var time = Math.floor(radius / 10 ) || 1;
+
   var styleSettings = {
-    animation: 'rotatePlanet 5s linear infinite',
-    top: '43%', //Mid value,
-    left: '49.5%', //mid value,
-    'transform-origin': '50% 100px',
+    animation: 'spin ' + time + 's linear infinite',
+    top: 'calc(50% - ' + radius + 'px)',
+    left: '50%',
+    'transform-origin': '50%' + radius + 'px',
     height: this.size + 'px',
     width: this.size + 'px'
   };
@@ -42,16 +41,8 @@ Planet.prototype.spin = function() {
   this.$node.css(styleSettings);
 };
 
-
-/* Planet.prototype.step = function() {
-  // call the old version of step at the beginning of any call to this new version of step
-
-  RandomSpaceObject.prototype.step.call(this);
-  // toggle() is a jQuery method to show/hide the <span> tag.
-  // See http://api.jquery.com/category/effects/ for this and
-  // other effects you can use on a jQuery-wrapped html tag.
-  this.setPosition();
-
-}; */
+Planet.prototype.lineUp = function() {
+  $('.planetContainer').toggleClass('reversePlanets');
+};
 
 window['addPlanet'] = Planet;
